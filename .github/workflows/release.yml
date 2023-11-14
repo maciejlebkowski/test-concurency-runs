@@ -1,0 +1,19 @@
+name: Release
+concurrency: main
+on:
+  push:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Show the commit being released
+        run: git show $GITHUB_SHA
+
+      - name: Simulate the release
+        run: sleep 20
