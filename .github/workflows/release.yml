@@ -1,10 +1,17 @@
 name: Release
-concurrency: main
+concurrency: deployment-${{ github.event.inputs.tenant }}
+
 on:
   push:
     branches: [ "main" ]
 
   workflow_dispatch:
+    inputs:
+      tenant:
+        description: "Tenant"
+        required: true
+        type: choice
+        options: [mohawk]
 
 jobs:
   release:
